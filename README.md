@@ -1,4 +1,4 @@
-# U4_Project: Automatic classification of the Big-Five personality traits from texts using embeddings and Recurrent Neural Networks
+# U5_Project: Automatic classification of the Big-Five personality traits from texts using embeddings and Recurrent Neural Networks
 
 This repository contains experiments for the classification of different Alzheimer's dementia stages from Magnetic Resonance Imaging using Deep Learning Techniques. The data was downloaded from [Kaggle](https://www.kaggle.com/tourist55/alzheimers-dataset-4-class-of-images). The data has four classes (Non demented, Very Mild Demented, Mild Demented, Moderate Demented) of images both in training as well as a testing set. Each image has a size of 208x176 pixels.
 
