@@ -1,31 +1,26 @@
 # U5_Project: Automatic classification of the Big-Five personality traits from texts using embeddings and Recurrent Neural Networks
 
-This repository contains experiments for the classification of different Alzheimer's dementia stages from Magnetic Resonance Imaging using Deep Learning Techniques. The data was downloaded from [Kaggle](https://www.kaggle.com/tourist55/alzheimers-dataset-4-class-of-images). The data has four classes (Non demented, Very Mild Demented, Mild Demented, Moderate Demented) of images both in training as well as a testing set. Each image has a size of 208x176 pixels.
+This repository contains experiments that helps to automatically determine the presence or absence of each of the 5 personality traits using the transcripts of the audio from vlogs of a set of 404 YouTube vloggers that explicitly show themselves in front of the a webcam talking about a variety of topics including personal issues, politics, movies, books, etc. The traits are Openness to experience (Open), Conscientiousness (Cons), Extraversion (Extr), Agreeableness (Agr) and Emotional stability (Emot), also named Neuroticism. This database counts with personality scores for the 404 transcripts, with which, from the value of the median for each trait, the labels of absence or presence of the trait were constructed as follows: if the score of the text in the trait is less than or equal to the median, it will have a label of 0 (absence of the trait), and if the score is greater than the median, it will have a label of 1 (presence of the trait).
 
 ## Guideline
 You can run each notebook in Google Colab.
 
 ## Content
-The proposed work was divided in 4 experiments: 
+The proposed work was divided in 2 experiments: 
 
-- **Experiment 1:** We designed 4 differents architectures for Convolutional Neural Networks to classify the Dementia stages in Alzheimer taking into account the original 4 classes. Due to the low performance of these experiments, for the next 3 experiments, we only consider the first 3 classes (we excluded the Moderate Demented class).
+- **Elmo_BLSTM:** We designed an architecture that contains 1 ELMo embedding layer downloaded from [tensorflow hub](https://tfhub.dev/google/elmo/2), followed by a bidirectional recurrent neural network and a Dense layer for the classification of each personality trait. In this notebook you can change the 5 personality traits and the number of maximun words for each text.
 
-- **Experiment 2:** We repeat the experiment 1 but with only 3 classes.
-
-- **Experiment 3:** We used a TensorFlow Hub [model](https://tfhub.dev/google/imagenet/mobilenet_v2_075_96/feature_vector/4) to classify in two different ways the stages of Alzheimer: 1) using the embeddings as the input to a classic Support Vector Machine classifier and 2) adding to the output of TF Hub model a fully connected stage to classify the 3 classes.
-
-- **Experiment 4:** We performed Transfer Learning from AlexNet. In this case, we designed a new architecture with the same first two layers of Alexnet. Four different tasks were implemented. The first is to train from scratch. The second experiment consist in making Transfer Learning without layer freezing. The third experiment consist in making Transfer Learning freezing only the first layer. And the last experiment, freezing the two layers from Alexnet.
+- **Glove_BLSTM:** We designed an architecture that contains 1 Embedding layer that uses the pre-trained 300-dimensional embeddings of [Glove](https://nlp.stanford.edu/projects/glove/)developed by Stanford University, followed by a bidirectional recurrent neural network and a Dense layer for the classification of each personality trait. In this notebook you can change the 5 personality traits and the number of maximun words for each text.
 
 - **Presentation Slides:** In this document you can see some slides with the summary of this work, highlighting the results obtained in each experiment and the conclusions.
 
 ## Conclusions
-- The best result is obtained with TensorFlow Hub, we believe it is because this original model is trained with a large amount of images (1.2 million and  1000 categories) in order to obtain feature vectors or embeddings that are useful to classify images, which is our goal.
+- As shown in the results, using the proposed architecture it was possible to improve up to 8% of the accuracy of the models with respect to the baseline, which proves the capacity of architectures like ELMo for the classification of personality traits.
 
-- The proposed methods using CNNs are useful to classify the different stages of severity of dementia in Alzheimer's disease based on MRI images, which would be very useful for support in the diagnosis and therapy of the disease.
+- Preprocessing is an important phase in text analysis because depending on the content of our data when introduced into a neural network, the performance of the model will change, since words with similar semantic and syntactic meaning according to the context should be represented by nearby word embeddings.
 
-- Different techniques such as dropout and L2 regularization are very useful when the models are implemented with real data, because these techniques allow a better generalization of the phenomenon and helps to avoid the overfitting of the network.
+- One of the great advantages of bidirectional recurrent neural networks is that these allow embeddings as input (GloVe), and also capture context forward and backward. This considerably improves the performance of current models for the classification and prediction of personality traits.
 
-- Transfer learning uses feature maps of robust models and allows for adjustment in training. This is very useful for classifying small databases that do not have enough data to train deep learning models. 
 
 ## Authors
 - Felipe Orlando López Pabón
