@@ -10,7 +10,7 @@ The proposed work was divided in 2 experiments:
 
 - **Elmo_BLSTM:** We designed an architecture that contains 1 ELMo embedding layer downloaded from [tensorflow hub](https://tfhub.dev/google/elmo/2), followed by a bidirectional long short term memory network and a dense layer for the classification of each personality trait. In this notebook you can change the 5 personality traits and the number of maximun words for each text.
 
-- **Glove_BLSTM:** We designed an architecture that contains 1 Embedding layer that uses the pre-trained 300-dimensional embeddings of [Glove](https://nlp.stanford.edu/projects/glove/)developed by Stanford University, followed by a bidirectional long short term memory network and a Dense layer for the classification of each personality trait. In this notebook you can change the 5 personality traits and the number of maximun words for each text.
+- **Glove_BLSTM:** We designed an architecture that contains 1 Embedding layer that uses the pre-trained 300-dimensional embeddings of [Glove](https://nlp.stanford.edu/projects/glove/) developed by Stanford University, followed by a bidirectional long short term memory network and a Dense layer for the classification of each personality trait. In this notebook you can change the 5 personality traits and the number of maximun words for each text.
 
 - **Presentation Slides:** In this document you can see some slides with the summary of this work, highlighting the results obtained in each experiment and the conclusions.
 
